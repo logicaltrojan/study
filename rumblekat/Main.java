@@ -1,11 +1,16 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Main{
     public static void main(String [] args){
-        DoubleLinkedList LL = new DoubleLinkedList();
-        LL.addLast(10);
-        LL.addLast(20);
-        LL.addLast(30);
-        System.out.println(LL);
+        Heap heap = new Heap(10);
+        heap.insert(5);
+        heap.insert(1);
+        heap.insert(2);
+        heap.insert(4);
+        heap.insert(-1);
+        
+        for(int i =0;i<heap.arr.length;i++){
+            System.out.println(heap.arr[i]);
+        }
     }
 }
