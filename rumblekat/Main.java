@@ -1,22 +1,16 @@
-import java.util.*;
+import java.util.Arrays;
 
 class Main{
     public static void main(String [] args){
-        CircularQueue queue = new CircularQueue(3);
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-
-        while(!queue.isEmpty()){
-            System.out.println(queue.dequeue());
-        }
-
-        queue.enqueue(4);
-        queue.enqueue(5);
-        queue.enqueue(6);
-
-        while(!queue.isEmpty()){
-            System.out.println(queue.dequeue());
+        Heap heap = new Heap(10);
+        heap.insert(5);
+        heap.insert(1);
+        heap.insert(2);
+        heap.insert(4);
+        heap.insert(-1);
+        
+        for(int i =0;i<heap.arr.length;i++){
+            System.out.println(heap.arr[i]);
         }
     }
 }

@@ -1,42 +1,44 @@
 import java.util.*;
 
-class Queue{ 
-    private int front;
-    private int rear;
-    private int max;
-    private Object [] arr;
-
-    public Queue(int max){
-       this.front = 0;
-       this.rear = -1;
-       this.max = max;
-       this.arr = new Object[max]; 
+public class Queue{
+    private Object[] queue;
+    private int size = 0;
+    private int rear = -1;
+    private int front = -1;
+    
+    Queue(int size){
+        this.size = size;
+        this.queue = new Object[size];
     }
 
-    public boolean empty(){
-        return (front == rear+1);
-    }
-
-    public boolean full(){
-        return (front == max-1);
-    }
-
-    public void enqueue(Object item){
-        if(full()){
-            throw new ArrayIndexOutOfBoundsException();
+    public void enqueue(Object element){
+        if(isFull()){
+            System.out.println("Overflow...");
         }
-        arr[++rear] = item;
-    }
-
-    public Object peek(){
-        if(empty()) throw new ArrayIndexOutOfBoundsException();
-        
-        return arr[front];
+        queue[++rear] = element; 
     }
 
     public Object dequeue(){
-        Object item = peek();
-        front++;
-        return item;
+        if(isEmpty()){
+            System.out.println("UnderFlow...");
+        }
+        Object temp = queue[++front];
+        if(isEmpty()){
+            rear = -1;
+            front = -1;
+        }
+        return temp;
+    }
+
+    public boolean isFull(){
+        return (rear == size-1);
+    }
+
+    public boolean isEmpty(){
+        return front == rear;
+    }
+
+    public int getSize(){
+        return size;
     }
 }
